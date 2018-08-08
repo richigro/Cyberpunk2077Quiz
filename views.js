@@ -51,26 +51,26 @@ function generateQuestion()
           
           <li class="js-answer answer-item">
             <input type="radio"   id="answer1"
-            name="answer" value="${STORE[currentQuestionNumber].answer1}" required>
+            name="answer1" value="${STORE[currentQuestionNumber].answer1}" required>
             <label  class="label"for="answer1"><span class="answer-btn">${STORE[currentQuestionNumber].answer1}</span>
             </label>
           </li>
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer2"><input type="radio" id="answer2"
-            name="answer" value="${STORE[currentQuestionNumber].answer2}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer2}</span>
+            name="answer2" value="${STORE[currentQuestionNumber].answer2}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer2}</span>
             </label>
           </li>
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer3"><input type="radio" id="answer3"
-            name="answer" value="${STORE[currentQuestionNumber].answer3}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer3}</span>
+            name="answer3" value="${STORE[currentQuestionNumber].answer3}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer3}</span>
             </label>
           </li>  
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer4"><input type="radio" id="answer4"
-            name="answer" value="${STORE[currentQuestionNumber].answer4}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer4}</span>
+            name="answer4" value="${STORE[currentQuestionNumber].answer4}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer4}</span>
             </label>
           </li>
 
