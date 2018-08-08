@@ -44,7 +44,9 @@ function generateQuestion()
       
         <h1 class="question">${STORE[currentQuestionNumber].question}</h1>
         <form class="js-form answers">
-          <fieldset>
+          
+        <fieldset role="radiogroup">
+          
           <ul class="list">
           
           <li class="js-answer answer-item">
@@ -75,7 +77,9 @@ function generateQuestion()
           </ul>
 
           <input  class="button submit-button"type="submit" value="Submit">
+
         </fieldset>
+
         </form>
       </div>`;
 }
@@ -83,7 +87,7 @@ function generateQuestion()
 function correctAnswerPage() {
   return `
     <div class="feedback-view">
-        <section role="feedback" class="answer-box">
+        <section role="dialog" class="answer-box">
           <div class="text-box">
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 0} out of ${numberOfQuestions}</p>
@@ -101,7 +105,7 @@ function correctAnswerPage() {
 
 function wrongAnswerPage() {
   return `
-      <div class="feedback-view">
+      <div role="dialog" class="feedback-view">
         <section class="answer-box">
           
           <div class="text-box">
@@ -122,7 +126,7 @@ function wrongAnswerPage() {
 
 function quizPassed() {
   return `
-  <section class="feedback-final">
+  <section role="dialog" class="feedback-final">
         <div class="feedback-box">
           <h1>You Passed the quiz!</h1>
           
@@ -145,7 +149,7 @@ function quizPassed() {
 
 function quizFailed() {
   return `
-    <section class="feedback-final">
+    <section role="dialog" class="feedback-final">
         <div class="feedback-box">
           <h1>You failed the quiz</h1>
 
