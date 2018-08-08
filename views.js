@@ -3,7 +3,7 @@
 function startPage(){
   return `
     <header role="banner">
-      <img class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt"Cyberpunk 2077 logo: text reads cyberpunk 2077"/>
+      <img role="presentation" class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt="Cyberpunk 2077 logo: text reads cyberpunk 2077" />
     </header> 
        <section class="quiz-intro js-quiz-intro">
           <h1>About the Quiz: </h1>
@@ -51,26 +51,26 @@ function generateQuestion()
           
           <li class="js-answer answer-item">
             <input type="radio"   id="answer1"
-            name="answer1" value="${STORE[currentQuestionNumber].answer1}" required>
+            name="answer" value="${STORE[currentQuestionNumber].answer1}" required>
             <label  class="label"for="answer1"><span class="answer-btn">${STORE[currentQuestionNumber].answer1}</span>
             </label>
           </li>
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer2"><input type="radio" id="answer2"
-            name="answer2" value="${STORE[currentQuestionNumber].answer2}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer2}</span>
+            name="answer" value="${STORE[currentQuestionNumber].answer2}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer2}</span>
             </label>
           </li>
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer3"><input type="radio" id="answer3"
-            name="answer3" value="${STORE[currentQuestionNumber].answer3}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer3}</span>
+            name="answer" value="${STORE[currentQuestionNumber].answer3}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer3}</span>
             </label>
           </li>  
           
           <li class="js-answer answer-item">
             <label class="js-label" for="answer4"><input type="radio" id="answer4"
-            name="answer4" value="${STORE[currentQuestionNumber].answer4}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer4}</span>
+            name="answer" value="${STORE[currentQuestionNumber].answer4}"><span class="answer-btn" >${STORE[currentQuestionNumber].answer4}</span>
             </label>
           </li>
 
@@ -89,6 +89,7 @@ function correctAnswerPage() {
     <div class="feedback-view">
         <section role="dialog" class="answer-box">
           <div class="text-box">
+            <h2 class="right-answer-message">You Got It right!</h2>
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 0} out of ${numberOfQuestions}</p>
             <p class="alignright">
@@ -96,7 +97,6 @@ function correctAnswerPage() {
             </p>
         </div>
           <img class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-just-around-the-corner-en.jpg" alt="Cyberpunk character hidding and holding gun">
-          <h2 class="right-answer-message">You Got It right!</h2>
           <p class="correct-answer">The correct answer was: ${STORE[currentQuestionNumber-1].correctAnswer}.</p>
         </section>
         <button class="js-button next-question-button button">Next Question</button>
@@ -107,7 +107,7 @@ function wrongAnswerPage() {
   return `
       <div role="dialog" class="feedback-view">
         <section class="answer-box">
-          
+        <h2 class="right-answer-message">You Got It Wrong</h2>
           <div class="text-box">
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 0} out of ${numberOfQuestions}</p>
@@ -117,7 +117,6 @@ function wrongAnswerPage() {
          </div>
 
           <img class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-its-a-deal-en.jpg" alt="Cyberpunk militia characyers ">
-          <h2 class="right-answer-message">You Got It Wrong</h2>
           <p class="correct-answer">The correct asnwer was: ${STORE[currentQuestionNumber-1].correctAnswer}.</p>
         </section>
         <button class="js-button next-question-button button">Next Question</button>
