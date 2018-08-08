@@ -2,7 +2,7 @@
 // this is the start up page 
 function startPage(){
   return `
-    <header role="header">
+    <header role="banner">
       <img class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt"Cyberpunk 2077 logo: text reads cyberpunk 2077"/>
     </header> 
        <section class="quiz-intro js-quiz-intro">
@@ -31,7 +31,7 @@ function generateQuestion()
 {
   return `<div class="question-view">
             
-        <header role="header" class="header-info">
+        <header role="banner" class="header-info">
           <img class="logo-question-view" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/cyberpunk.12.png" alt="Cyberpunk 2077 official logo"/>
           <div class="text-box">
             <p class="quiz-progress alignleft">
@@ -44,6 +44,7 @@ function generateQuestion()
       
         <h1 class="question">${STORE[currentQuestionNumber].question}</h1>
         <form class="js-form answers">
+          <fieldset>
           <ul class="list">
           
           <li class="js-answer answer-item">
@@ -74,7 +75,7 @@ function generateQuestion()
           </ul>
 
           <input  class="button submit-button"type="submit" value="Submit">
-
+        </fieldset>
         </form>
       </div>`;
 }
