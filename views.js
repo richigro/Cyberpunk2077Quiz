@@ -32,7 +32,7 @@ function generateQuestion()
   return `<div class="question-view">
             
         <header role="banner" class="header-info">
-          <img class="logo-question-view" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/cyberpunk.12.png" alt="Cyberpunk 2077 official logo"/>
+          <img role="presentation" class="logo-question-view" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/cyberpunk.12.png" alt="Cyberpunk 2077 official logo"/>
           <div class="text-box">
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 1} out of ${numberOfQuestions}</p>

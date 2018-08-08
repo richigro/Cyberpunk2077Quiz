@@ -35,6 +35,9 @@ main {
   }
 }
 
+fieldset {
+  border: none;
+}
 
 /* ============================
 Styles for start page View
