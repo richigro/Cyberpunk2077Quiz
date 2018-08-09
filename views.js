@@ -3,7 +3,7 @@
 function startPage(){
   return `
     <header role="banner">
-      <img role="presentation" class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt="Cyberpunk 2077 logo: text reads cyberpunk 2077" />
+      <img role="presentation" class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt="Cyberpunk 2077 logo: text reads cyberpunk 2077"/>
     </header> 
        <section class="quiz-intro js-quiz-intro">
           <h1>About the Quiz: </h1>
@@ -44,15 +44,14 @@ function generateQuestion()
       
         <h1 class="question">${STORE[currentQuestionNumber].question}</h1>
         <form class="js-form answers">
-          
-        <fieldset role="radiogroup">
-          
+          <fieldset role="radiogroup">
+          <legend>Select an answer:</legend>
           <ul class="list">
           
           <li class="js-answer answer-item">
             <input type="radio"   id="answer1"
             name="answer" value="${STORE[currentQuestionNumber].answer1}" required>
-            <label  class="label"for="answer1"><span class="answer-btn">${STORE[currentQuestionNumber].answer1}</span>
+            <label  class="label" for="answer1"><span class="answer-btn">${STORE[currentQuestionNumber].answer1}</span>
             </label>
           </li>
           
@@ -77,9 +76,7 @@ function generateQuestion()
           </ul>
 
           <input  class="button submit-button"type="submit" value="Submit">
-
-        </fieldset>
-
+          </fieldset>
         </form>
       </div>`;
 }
@@ -88,15 +85,15 @@ function correctAnswerPage() {
   return `
     <div class="feedback-view">
         <section role="dialog" class="answer-box">
+        <h2 class="right-answer-message">You Got It right!</h2>
           <div class="text-box">
-            <h2 class="right-answer-message">You Got It right!</h2>
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 0} out of ${numberOfQuestions}</p>
             <p class="alignright">
             Correct answers: ${correctAnswers}
             </p>
         </div>
-          <img class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-just-around-the-corner-en.jpg" alt="Cyberpunk character hidding and holding gun">
+          <img role="presentation" class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-just-around-the-corner-en.jpg" alt="Cyberpunk character hidding and holding gun">
           <p class="correct-answer">The correct answer was: ${STORE[currentQuestionNumber-1].correctAnswer}.</p>
         </section>
         <button class="js-button next-question-button button">Next Question</button>
@@ -105,9 +102,9 @@ function correctAnswerPage() {
 
 function wrongAnswerPage() {
   return `
-      <div role="dialog" class="feedback-view">
-        <section class="answer-box">
-        <h2 class="right-answer-message">You Got It Wrong</h2>
+      <div class="feedback-view">
+        <section role="dialog" class="answer-box">
+          <h2 class="right-answer-message">You Got It Wrong</h2>
           <div class="text-box">
             <p class="quiz-progress alignleft">
             Question ${currentQuestionNumber + 0} out of ${numberOfQuestions}</p>
@@ -115,8 +112,7 @@ function wrongAnswerPage() {
             Correct answers: ${correctAnswers}
             </p>
          </div>
-
-          <img class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-its-a-deal-en.jpg" alt="Cyberpunk militia characyers ">
+          <img role="presentation" class="answer-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-its-a-deal-en.jpg" alt="Cyberpunk militia characyers ">
           <p class="correct-answer">The correct asnwer was: ${STORE[currentQuestionNumber-1].correctAnswer}.</p>
         </section>
         <button class="js-button next-question-button button">Next Question</button>
@@ -138,7 +134,7 @@ function quizPassed() {
           </div>
 
           <img
-           class="feedback-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-high-speed-high-stakes-en.jpg" alt="black car driving away fast">
+           role="presentation" class="feedback-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-high-speed-high-stakes-en.jpg" alt="black car driving away fast">
           <p>Congratulations</p>
           <p>You got ${correctAnswers} correct answers</p>
           <button class="js-restart restart-quiz button">Try quiz Again</button>
@@ -161,7 +157,7 @@ function quizFailed() {
           </div>
 
           <img
-           class="feedback-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-trauma-team-en.jpg" alt="cyberpunk doctor using a defibrillator">
+           role="presentation" class="feedback-img" src="https://cdn-l-cyberpunk.cdprojektred.com/gallery/1080p/screen-trauma-team-en.jpg" alt="cyberpunk doctor using a defibrillator">
           <p>You got ${correctAnswers} correct answers</p>
           <p>Better luck nex time!</p>
           <button class="js-restart restart-quiz button">Retry Quiz</button>
