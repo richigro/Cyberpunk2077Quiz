@@ -1,133 +1,90 @@
-// adds a view to the app
-function addView(view){
-  $(".js-app-container").append(view);
+const url = "https://www.googleapis.com/youtube/v3/search";
+const apiKey = "AIzaSyDsiCnzHCqff_GpKlF426N6BRoQo7I56Bo";
+
+function removeLastView() {
+  $(".js-main").children().remove();
 }
 
-// renders the start page to app
-function renderStartPage() {
-  addView(startPage());
+function addToPage(video) {
+  $(".js-main").append(video);
 }
 
-// remove elements from current view
-function removeLastView(){
-   $(".js-app-container").children().remove();
+function renderVideoThumbnail(data) {
+  return `
+      <div id="${data.id.videoId}" class="js-thumbnail    thumbnail">
+        <img class="js-img" src="${data.snippet.thumbnails.medium.url}" alt="${data.snippet.title}">
+        <h1>${data.snippet.title}</h1>
+        <p>${data.snippet.channelTitle}</p>
+        <p>${data.snippet.publishedAt}</p>
+      </div>
+  `;
 }
 
-function renderNextQuestion() {
-  addView(generateQuestion());
-  window.scrollTo(0, 0);
-  
-}
-
-function renderFinalPage(passingGrade) {
-  //remove view
-  removeLastView();
-  //
-  if(passingGrade){
-    //render passed view
-    addView(quizPassed());
-  } else {
-    //render the failed view
-    addView(quizFailed());
+function getDataFromApi(searchTerm, callback) {
+  const query = {
+    part: 'snippet',
+    key: apiKey,
+    q: `${searchTerm}`
   }
+  $.getJSON(url, query, callback);
 }
 
-function isQuizDone() {
-  const pass = correctAnswers >= passingGrade ? true : false;
-  renderFinalPage(pass);
+function printResult(data) {
+  // array containing data items
+  const objectArray = data.items;
+  // console.log(objectArray[0].id.videoId);
   
+  objectArray.forEach((videoObject) => {
+     addToPage(renderVideoThumbnail(videoObject));
+  });
+
 }
 
-function nextQuestionButton(){
-   //event listener on nex button
-   $(".js-app-container").on("click", ".js-button", function(event)
-   {
-     //remove last view
+function search(){
+  let userQuery = "";
+  $("button").click(function(event) {
+    // remove current view
     removeLastView();
-    //generate the nex question
+
+    userQuery = $('input[type="text"]').val();
+   // clear text field
+    $('input[type="text"]').val("");
     
-    if(currentQuestionNumber+0 === numberOfQuestions){
-      // checck and see if it is last question
-      isQuizDone();
-    } else {
-      renderNextQuestion();
-      
-    } 
-   });
+    // get yOutube data from api 
+    getDataFromApi(userQuery, printResult);
+
+
+  });
+}
+
+function viewingPage(id) {
+  return `
+    <div class="video-view" >
+        <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div> 
   
+  `;
 }
 
-function handleAnswer() {
-  //event listener on form submit
-  $(".js-app-container").on("submit" , ".js-form", function(event) {
-    event.preventDefault();
-    //log what the answer was 
-    const userAnswer = $("input[name='answer']:checked").val();
-    // cheks to see if answer is right or wrong
-    gradeAnswer(userAnswer);
-  });
-}
 
-function gradeAnswer(userAnswer){
-  if(userAnswer === STORE[currentQuestionNumber].correctAnswer){
-    // increment correct answers count
-    correctAnswers++;
-    //increase current question number
-    currentQuestionNumber++;
-    //display correct answer page
-    renderCorrectAnswerPage();
-  } else {
-    //increase current question number
-    currentQuestionNumber++;
-    //display incorrect answer page
-    renderWrongAnswerPage();
-  }
-}
 
-function renderCorrectAnswerPage(){
-  //remove last view
-  removeLastView();
-  //render correctAnswerPage
-  addView(correctAnswerPage());
-}
 
-function renderWrongAnswerPage(){
-  //remove last view
-  removeLastView();
-  //render WrongAnswerPage
-  addView(wrongAnswerPage());
-}
 
-function restartQuiz() {
-  $(".js-app-container").on("click", ".js-restart", function(event) {
-    // refresh page and quiz
+function goToVideo() {
+  $(".js-main").on("click", ".js-thumbnail", (event) => {
+    // open another page with tagret url
+    // remove video on page
+    let videoId = event.target.parentElement.getAttribute("id");
     removeLastView();
-    // reset correct questions
-    correctAnswers = 0;
-    // reset question number
-    currentQuestionNumber = 0;
-    addView(generateQuestion());
+     // render new view
+    addToPage(viewingPage(videoId));
   });
 }
 
-function answerClick() {
-  $(".js-app-container").on("click", ".js-answer", function(event) {
-    $(this).find("input").prop("checked", true);
-  });
+function runApp() {
+  // do stuff
+  search();
+  goToVideo();
 }
 
-// start quiz function
-function appInstance(){
-  //renders the start page
-  renderStartPage();
-  // handle answer selection
-  answerClick();
-  //waits for button click
-  nextQuestionButton();
-  // checks answer
-  handleAnswer();
-  // wait for restart button
-  restartQuiz();
-}
-// loads function when dom is fully loaded
-$(appInstance);
+$(runApp);
