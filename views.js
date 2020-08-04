@@ -3,7 +3,7 @@
 function startPage(){
   return `
     <header role="banner">
-      <img role="presentation" class="js-logo logo" src="https://www.cyberpunk.net/img/4b1d760d1ce7081d/logo-en.12.png" alt="Cyberpunk 2077 logo: text reads cyberpunk 2077"/>
+      <img role="presentation" class="js-logo logo" src="https://www.cyberpunk.net/build/images/logo-en-28275215.png" alt="Cyberpunk 2077 logo: text reads cyberpunk 2077"/>
     </header> 
        <section class="quiz-intro js-quiz-intro">
           <h1>About the Quiz: </h1>
