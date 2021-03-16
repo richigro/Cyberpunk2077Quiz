@@ -1,3 +1,4 @@
+//refactor code to make more readable 
 // adds a view to the app
 function addView(view){
   $(".js-app-container").append(view);
